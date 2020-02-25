@@ -1,8 +1,15 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IndexInverse{
+public class IndexInverse implements Serializable{
 
 	private Map<String, ArrayList<String>> listeIndex;
 
@@ -14,6 +21,16 @@ public class IndexInverse{
 		this.listeIndex = new HashMap<String, ArrayList<String>>();
 		// TODO Auto-generated constructor stub
 	}
+	
+		
+	
+	public void serialize() throws FileNotFoundException, IOException {
+		ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream("indexInverseSerialize.txt"));
+		oos.writeObject(this.listeIndex);
+		oos.close();
+	}
+	
+	
 
 	public void ajouter(String mot , String clef) {
 		if (this.listeIndex.containsKey(mot)) {
@@ -30,6 +47,12 @@ public class IndexInverse{
 
 	public Map<String, ArrayList<String>> getListeIndex() {
 		return listeIndex;
+	}
+	
+	public ArrayList<String> contientMot(String mot){
+		listeIndex.get(mot);
+		return listeIndex.get(mot);
+		
 	}
 	
 	

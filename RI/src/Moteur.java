@@ -8,7 +8,7 @@ public class Moteur {
 	private Index index;
 	private IndexInverse indexInverse;
 	private Crawler crawler;
-	private String source = "../corpusRInew";
+	private String source = "./corpusRInew";
 	private Filtreur filtreur;
 	
 	public Moteur() {
@@ -24,8 +24,11 @@ public class Moteur {
 		try {
 			this.crawl();
 			this.index.init(this.crawler.getListeTextesDesFichiersParses());
-	
-			System.out.println(this.indexInverse.getListeIndex());
+			this.indexInverse.serialize();
+			this.indexInverse.getListeIndex();
+			Bool test=new Bool(this.index,this.indexInverse);
+			System.out.println(test.recherche("through"));
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
