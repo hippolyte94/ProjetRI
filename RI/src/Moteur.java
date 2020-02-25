@@ -27,7 +27,7 @@ public class Moteur {
 			this.indexInverse.serialize();
 			this.indexInverse.getListeIndex();
 			Bool test=new Bool(this.index,this.indexInverse);
-			System.out.println(test.recherche("through"));
+			System.out.println(test.recherche("Pine AND problem"));
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

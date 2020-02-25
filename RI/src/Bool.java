@@ -23,11 +23,12 @@ public class Bool {
 		SimpleTokenizer tokennizzer = SimpleTokenizer.INSTANCE;
 		for(String mot:split) {
 			System.out.println(mot);
-			if(mot!="AND" && mot !="OR"&& mot!="NOt")
+			if(!mot.equals("AND") && !mot.equals("OR")&& !mot.equals("NOT"))
 				contiens.put(tokennizzer.tokenize(mot)[0], indexInverse.contientMot(tokennizzer.tokenize(mot)[0]));
-			if(mot=="AND")
+			if(mot.equals("AND"))
+				System.out.println("hello");
 				contienA=true;
-			if(mot=="NOT")
+			if(mot.equals("NOT"))
 				contienN=true;
 		}
 		System.out.println(contiens);
@@ -42,9 +43,20 @@ public class Bool {
 		}
 		if(contienA) {
 			Map<String,Integer> temp=new HashMap<String,Integer>();
-		
+			if(split.length==3) {
+				for(String url:contiens.get(split[0])) {
+					System.out.println("la");
+					if(contiens.get(split[2]).contains(url)) {
+						temp.put(url, score.get(split[0]).get(url)+score.get(split[2]).get(url));
+					}
+				}
+			}
+			Map <String, Map<String, Integer>>temp2 =new HashMap<String, Map<String, Integer>>();
+			temp2.put("1",temp);
+			System.out.println(temp);
+			return temp2;
 		}
-		
+
 		return score;
 		
 	}
