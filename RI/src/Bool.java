@@ -56,6 +56,26 @@ public class Bool {
 			System.out.println(temp);
 			return temp2;
 		}
+		if(contienN) {
+			Map<String,ArrayList<String>> contiens2= new HashMap<String,ArrayList<String>>();
+			Map<String, ArrayList<String>> temp = indexInverse.getListeIndex();
+			for(String mot:contiens.keySet()) {
+				if(!temp.containsKey(mot)) {
+					contiens2.put(tokennizzer.tokenize(mot)[0], indexInverse.contientMot(tokennizzer.tokenize(mot)[0]));
+				}
+			}
+			Map<String,Map<String,Integer>> score2=new HashMap<String,Map<String,Integer>>();
+			for(String mot:contiens2.keySet()) {
+				score2.put(mot,new HashMap<String,Integer>());
+				Map<String,Integer> temp2=index.getScore(contiens2.get(mot), mot);
+				for(String fichier:temp2.keySet()) {
+					score2.get(mot).put(fichier, temp2.get(fichier));
+				}
+
+			}
+			System.out.println("lol je suis passe la trop lourd");
+			return score2;
+		}
 
 		return score;
 		
