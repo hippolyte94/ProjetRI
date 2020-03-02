@@ -15,7 +15,7 @@ public class Launch {
 			System.out.println();
 			System.out.println("Options : ");
 			System.out.println();
-			System.out.println("1. Màj des Indexes");
+			System.out.println("1. Mï¿½j des Indexes");
 			System.out.println("2. Recherche d'infos");
 			System.out.println("3. Quitter");
 			System.out.println();
@@ -30,6 +30,7 @@ public class Launch {
 				break;
 				
 				case "2":
+					
 					
 				break;
 				

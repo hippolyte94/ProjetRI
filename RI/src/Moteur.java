@@ -26,8 +26,7 @@ public class Moteur {
 			this.index.init(this.crawler.getListeTextesDesFichiersParses());
 			this.indexInverse.serialize();
 			this.indexInverse.getListeIndex();
-			Bool test=new Bool(this.index,this.indexInverse);
-			System.out.println(test.recherche("Pine NOT problem"));
+
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -40,5 +39,9 @@ public class Moteur {
 	public void crawl() throws IOException, ParserConfigurationException {
 		this.crawler.initParsing();
 
+	}
+	public void recherche(String recherche) {
+		Bool test=new Bool(this.index,this.indexInverse);
+		System.out.println(test.recherche(recherche));
 	}
 }
